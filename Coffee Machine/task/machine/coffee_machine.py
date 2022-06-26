@@ -1,13 +1,4 @@
-#
-# output = """Starting to make a coffee
-# Grinding coffee beans
-# Boiling water
-# Mixing boiled water with crushed coffee beans
-# Pouring coffee into the cup
-# Pouring some milk into the cup
-# Coffee is ready!"""
-#
-# print(output)
+
 from sys import exit
 
 MSG_NUMBER_OF_CUPS = "Write how many cups of coffee you will need:"
@@ -67,10 +58,6 @@ class CoffeeMachine:
             return
         self.buy_item(self.options_buy[option])
 
-    def take(self):
-        print(f'{MSG_TAKE_MONEY}{self.money}')
-        self.money = 0
-
     def fill(self):
         print(MSG_INTAKE_WATER)
         self.water += int(input())
@@ -92,6 +79,10 @@ class CoffeeMachine:
         print(f'{self.cups} {MSG_DISPOSABLE_CUPS}')
         print(f'${self.money} {MSG_MONEY}')
 
+    def take(self):
+        print(f'{MSG_TAKE_MONEY}{self.money}')
+        self.money = 0
+
     def handle_option(self):
         print(f'\n{MSG_ACTION}')
         option = input()
@@ -111,17 +102,6 @@ class CoffeeMachine:
         "3": {"water": 200, "milk": 100, "coffee_beans": 12, "money": 6},
     }
 
-
-# produced_cups = min(intake_water // 200, intake_milk // 50, intake_coffee_beans // 15)
-#
-# result = produced_cups - cups
-#
-# if result == 0:
-#     print(f'{MSG_CAN_MAKE}')
-# elif result > 0:
-#     print(f'{MSG_CAN_MAKE_MORE_1} {result} {MSG_CAN_MAKE_MORE_2}')
-# elif result < 0:
-#     print(f'{MSG_CANNOT_MAKE_1} {produced_cups} {MSG_CANNOT_MAKE_2}')
 
 coffee_machine = CoffeeMachine()
 while True:
